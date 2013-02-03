@@ -105,12 +105,12 @@
     });
     
     // volumeUp
-    $(player).find('.'+ opts.cssPrefix +'control-volume-up').bind('click', function(e) {   
+    $(player).find('.'+ opts.cssPrefix +'volume-up').bind('click', function(e) {   
       e.preventDefault();
       if(opts.element.volume < 1.0) opts.element.volume = opts.element.volume + 0.1;      
     });
     
-    $(player).find('.'+ opts.cssPrefix +'control-volume-down').bind('click', function(e) {   
+    $(player).find('.'+ opts.cssPrefix +'volume-down').bind('click', function(e) {   
       e.preventDefault();
       if(opts.element.volume > 0.0) opts.element.volume = opts.element.volume - 0.1;     
     });
