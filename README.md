@@ -23,8 +23,9 @@ Html
 ===============
 ```html
 <div class="audio-player">
-  <div><a class="play" href="#">Play</a></div>
-  <div><a class="pause" href="#">Pause</a></div>
-  <div><a class="play-toggle" href="#">PlayToggle</a></div>
+  <a class="audio-player-play-toggle" href="#">PlayToggle</a></div>
+  <progress class="audio-player-progressBar" value="0" max="100"></progress>
+  <a class="audio-player-volume-up" href="#">+</a>
+  <a class="audio-player-volume-down" href="#">-</a>    
 </div>
 ```
