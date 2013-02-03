@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>jquery NanoAudioPlayer</title>
+    <meta charset="utf-8" />     
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../jquery.nanoAudioPlayer.js"></script>
+    <script>
+      $('.audio-player').nanoAudioPlayer({ 
+        autoplay: true,
+        loop: true,
+        file: 'timetrouble_sound'
+      });
+    </script>
+  </head>
+  <body>
+      <div>
+        <div class="audio-player">
+          <div><a class="play" href="#">Play</a></div>
+          <div><a class="pause" href="#">Pause</a></div>
+          <div><a class="play-toggle" href="#">PlayToggle</a></div>
+        </div>
+      </div>
+    
+  </body>
+</html>
