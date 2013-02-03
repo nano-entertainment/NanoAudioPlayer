@@ -41,7 +41,7 @@
       }, false)
     }
    
-    /
+    
     if(opts.progressBar)
     {
       //current time update
