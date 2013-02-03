@@ -5,8 +5,9 @@ Javascript
 ===============
 ```js
 $('.audio-player').NanoAudioPlayer();
-
+```
 settings:
+```js
 {
   file: 'sound/sound',
   autoplay: true
