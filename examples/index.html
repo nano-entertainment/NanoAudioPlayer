@@ -2,24 +2,130 @@
   <head>
     <title>jquery NanoAudioPlayer</title>
     <meta charset="utf-8" />     
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="theme/jquery/css/smoothness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+    <link href="theme/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="theme/standard.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">NanoAudioPlayer Examples</a>
+        <ul class="nav">
+          <li class="active"><a href="#simple-player">Simple Player</a></li>
+          <li><a href="#all-features">All Features</a></li>
+        </ul>
+       </div>
+    </div>
+    
+          
+      
+      
+      <div id="#simple-player">
+        <h2>Simple Player</h1>
+        <div class="simple-player audio-player row-fluid">
+          <div class="span2"><a class="audio-player-play-toggle audio-player-control" href="#"><img src="theme/glyphicons/glyphicons_173_play.png"><img src="theme/glyphicons/glyphicons_174_pause.png"></a></div>
+          <div class="span8 row-fluid"><progress class="audio-player-progressBar span12" value="0" max="100"></progress></div>
+          <div  class="span2 audio-player-control-volume">
+            <div>
+              &nbsp;
+              <a class="audio-player-control-volume-up" href="#">
+                +
+              </a>
+            /
+              <a class="audio-player-control-volume-down" href="#">
+                -
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="#all-features">
+        <h2>All Features</h1>
+        <div class="full-player audio-player">
+          <table class="table">
+           <tr>
+             <td>
+                <a class="audio-player-play" href="#">
+                  <img src="theme/glyphicons/glyphicons_173_play.png">
+                </a>
+             </td>
+             <td>
+               <code>
+                 
+                 &lt;a class="audio-player-play" href="#"&gt;<br>
+                 &nbsp;&nbsp;&lt;img src="theme/glyphicons/glyphicons_173_play.png"&gt;<br>
+                &lt;/a&gt;
+               </code>
+             </td>
+            </tr>
+            <tr>
+              <td>
+                <a class="audio-player-pause" href="#">
+                  <img src="theme/glyphicons/glyphicons_174_pause.png">
+                </a>
+              </td>
+              <td>
+                <code>                 
+                 &lt;a class="audio-player-play" href="#"&gt;<br>
+                 &nbsp&;nbsp;&lt;img src="theme/glyphicons/glyphicons_174_pause.png"&gt;<br>
+                &lt/a&gt
+               </code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a class="audio-player-play-toggle" href="#">
+                  <img src="theme/glyphicons/glyphicons_173_play.png">
+                  <img src="theme/glyphicons/glyphicons_174_pause.png">
+                </a>
+              </td>
+              <td>
+                <code>                 
+                 &lt;a class="audio-player-play" href="#"&gt;<br>
+                 &nbsp;&nbsp;&lt;img src="theme/glyphicons/glyphicons_173_play.png"&gt;<br>
+                 &nbsp;&nbsp;&lt;img src="theme/glyphicons/glyphicons_174_pause.png"&gt;<br>
+                &lt/a&gt
+               </code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div>
+                  <progress class="audio-player-progressBar" value="0" max="100">
+                </div>
+              </td>
+              <td>
+                <code>
+                  &lt;progress class="audio-player-progressBar" value="0" max="100"&gt;
+                </code>
+              </td>
+            </tr>
+        
+          </table>
+          
+          
+          
+        </div>      
+      </div>
+      
+    </div>
+    <script src="theme/jquery/js/jquery-1.9.0.js"></script>
+    <script src="theme/jquery/js/jquery-ui-1.10.0.custom.js"></script>
+    <script src="dump.js"></script>
     <script src="../jquery.nanoAudioPlayer.js"></script>
     <script>
-      $('.audio-player').nanoAudioPlayer({ 
-        autoplay: true,
+      $('.simple-player').nanoAudioPlayer({ 
+        autoplay: false,
         loop: true,
         file: 'timetrouble_sound'
       });
+      $('.full-player').nanoAudioPlayer({ 
+        autoplay: false,
+        loop: false,
+        file: 'timetrouble_sound'
+      });
     </script>
-  </head>
-  <body>
-      <div>
-        <div class="audio-player">
-          <div><a class="play" href="#">Play</a></div>
-          <div><a class="pause" href="#">Pause</a></div>
-          <div><a class="play-toggle" href="#">PlayToggle</a></div>
-        </div>
-      </div>
-    
   </body>
 </html>

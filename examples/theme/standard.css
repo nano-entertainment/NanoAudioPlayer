@@ -1,0 +1,29 @@
+/* 
+    Document   : standard
+    Created on : 03.02.2013, 19:45:11
+    Author     : Lasse Nielsen
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.simple-player
+{
+  border: 1px solid #000;
+  width: 300px;
+  padding: 10px;
+}
+
+.audio-player-control
+{
+  margin: 5px 0;
+}
+
+.audio-player-control img
+{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.audio-player-control-volume div
+{
+  margin: 6.5px 0;
+}
