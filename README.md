@@ -9,7 +9,12 @@ $('.audio-player').NanoAudioPlayer({ });
 settings:
 ```js
 {
-  file: 'sound/sound',
+  file: '',
+  autoplay: false,
+  loop: false,
+  progressBar: true,
+  element: new Audio(),
+  cssPrefix: 'audio-player-'
   autoplay: true
 }
 ```
