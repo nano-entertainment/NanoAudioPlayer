@@ -14,8 +14,7 @@ settings:
   loop: false,
   progressBar: true,
   element: new Audio(),
-  cssPrefix: 'audio-player-',
-  autoplay: true
+  cssPrefix: 'audio-player-'
 }
 ```
 
