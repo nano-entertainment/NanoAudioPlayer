@@ -18,27 +18,32 @@
     // EventListener 
     
     // autoplay    
-    opts.element.bind('canplay', function() {
+    opts.element.addEventListener('canplay', function() {
       if( opts.autoplay ) opts.element.play();
-    });
-    
+    }, false);
+ 
+    var suffix;
+ 
+    if(opts.element.canPlayType("audio/ogg"))
+      {
+        suffix = "ogg";
+      } else {
+        suffix = "mp3";
+      }
+    opts.element.src = opts.file + "." + suffix;
+ 
     //loop
     if( typeof opts.element.loop == 'boolean') {
       opts.element.loop = opts.loop;
     } else {
-      opts.element.bind('ended', function() {
+      opts.element.addEventListener('ended', function() {
         if( opts.loop ) {
           opts.element.duration = opts.element.startTime;
           opts.element.play();
         }
-      })
+      }, false)
     }
-    opts.element.bind('ended', function() {
-      if( opts.loop ) {
-        opts.element.duration = 0;
-        opts.element.play();
-      }
-    })
+    
     
     
     // Html-Event Listener
