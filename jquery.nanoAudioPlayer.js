@@ -8,6 +8,7 @@
 (function($){
   $.fn.nanoAudioPlayer = function( options ){
     var defaults = {
+      file: '',
       autoplay: false,
       loop: false,
       progressBar: true,
@@ -40,8 +41,11 @@
       }, false)
     }
    
-    //current time update
-    opts.element.addEventListener('timeupdate', function() {
+    /
+    if(opts.progressBar)
+    {
+      //current time update
+      opts.element.addEventListener('timeupdate', function() {
       
       $(player).find('.'+ opts.cssPrefix +'progressBar').attr('value', opts.element.currentTime);
       
@@ -51,6 +55,8 @@
     opts.element.addEventListener('durationchange', function() {
       $(player).find('.'+ opts.cssPrefix +'progressBar').attr('max', opts.element.duration);
     }, false);
+    }
+    
     
     
     
