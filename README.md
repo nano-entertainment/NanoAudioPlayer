@@ -4,7 +4,7 @@ NanoAudioPlayer
 Javascript
 ===============
 ```js
-$('.audio-player').NanoAudioPlayer();
+$('.audio-player').NanoAudioPlayer({ });
 ```
 settings:
 ```js
