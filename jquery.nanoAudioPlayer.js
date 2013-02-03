@@ -10,27 +10,23 @@
     var defaults = {
       autoplay: false,
       loop: false,
-      element: new Audio()
+      progressBar: true,
+      element: new Audio(),
+      cssPrefix: 'audio-player-'
     };
     
     var opts = $.extend(defaults, options);
+    var player = this;
     
-    // EventListener 
+    /**
+     * EventListener
+     */
     
     // autoplay    
     opts.element.addEventListener('canplay', function() {
       if( opts.autoplay ) opts.element.play();
     }, false);
  
-    var suffix;
- 
-    if(opts.element.canPlayType("audio/ogg"))
-      {
-        suffix = "ogg";
-      } else {
-        suffix = "mp3";
-      }
-    opts.element.src = opts.file + "." + suffix;
  
     //loop
     if( typeof opts.element.loop == 'boolean') {
@@ -38,36 +34,83 @@
     } else {
       opts.element.addEventListener('ended', function() {
         if( opts.loop ) {
-          opts.element.duration = opts.element.startTime;
+          opts.element.currentTime = opts.element.startTime;
           opts.element.play();
         }
       }, false)
     }
+   
+    //current time update
+    opts.element.addEventListener('timeupdate', function() {
+      
+      $(player).find('.'+ opts.cssPrefix +'progressBar').attr('value', opts.element.currentTime);
+      
+    }, false);
+    
+    //max time update
+    opts.element.addEventListener('durationchange', function() {
+      $(player).find('.'+ opts.cssPrefix +'progressBar').attr('max', opts.element.duration);
+    }, false);
     
     
+    
+    
+    var suffix;
+    
+    //add audio
+    if(opts.element.canPlayType("audio/ogg"))
+    {
+      suffix = "ogg";
+    } else {
+      suffix = "mp3";
+    }  
+    
+    opts.element.src = opts.file + "." + suffix;
+    
+    
+
     
     // Html-Event Listener
     
     //play
-    $(this).find('.play').bind('click', function() {      
-      opts.audioElement.play();              
+    $(this).find('.'+ opts.cssPrefix +'play').bind('click', function(e) {      
+      e.preventDefault();
+      opts.element.play();              
+      
     });
     
     //pause
-    $(this).find('.pause').bind('click', function() {      
-      opts.audioElement.pause();      
+    $(this).find('.'+ opts.cssPrefix +'pause').bind('click', function(e) {   
+      e.preventDefault();
+      opts.element.pause();      
     });
     
+    
     // playToggle
-    $(this).find('.play-toggle').bind('click', function() {
-      if(opts.audioElement.paused) {
-    	opts.audioElement.play();
+    $(this).find('.'+ opts.cssPrefix +'play-toggle').bind('click', function(e) {
+      e.preventDefault();
+      if(opts.element.paused) {
+    	opts.element.play();
       } else {
-        opts.audioElement.pause();
+        opts.element.pause();
       }
       
       
     });
+    
+    // volumeUp
+    $(player).find('.'+ opts.cssPrefix +'control-volume-up').bind('click', function(e) {   
+      e.preventDefault();
+      if(opts.element.volume < 1.0) opts.element.volume = opts.element.volume + 0.1;      
+    });
+    
+    $(player).find('.'+ opts.cssPrefix +'control-volume-down').bind('click', function(e) {   
+      e.preventDefault();
+      if(opts.element.volume > 0.0) opts.element.volume = opts.element.volume - 0.1;     
+    });
+    
+    
+    return this;
 
   }
 })(jQuery);
