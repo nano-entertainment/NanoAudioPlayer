@@ -5,16 +5,41 @@
  * 03.02.2013
  * http://github.com/nano-entertainment/NanoAudioPlayer
  */
+
+
 (function($){
+	
+	function selectPlayTypes(element, types)
+	{
+	  var playTypes = new Array();
+	  var i = 0;
+	  $.each(types, function(key, value) {
+	  	if(element.canPlayType(types[i]) {
+	  		playTypes[i]['suffix'] = key;
+	  		playTypes[i]['type'] = value;
+	  		
+	  	}
+	  });
+	  return playTypes;
+	}
+	
+	
   $.fn.nanoAudioPlayer = function( options ){
     var defaults = {
       file: '',
       autoplay: false,
       loop: false,
       progressBar: true,
+      volume: 100,
       element: new Audio(),
-      cssPrefix: 'audio-player-'
+      cssPrefix: 'audio-player-',
+      types: {
+        ogg: 'audio/ogg',
+        mp3: 'audio/mpeg'
+      } 
     };
+    
+    
     
     var opts = $.extend(defaults, options);
     var player = this;
@@ -51,15 +76,16 @@
       
     }, false);
     
-    //max time update
-    opts.element.addEventListener('durationchange', function() {
-      $(player).find('.'+ opts.cssPrefix +'progressBar').attr('max', opts.element.duration);
-    }, false);
+      //max time update
+      
+      opts.element.addEventListener('durationchange', function() {
+        $(player).find('.'+ opts.cssPrefix +'progressBar').attr('max', opts.element.duration);
+      }, false);
     }
     
+    selectPlayType(opts.element, opts.types, 0);
     
-    
-    
+    key
     
     var suffix;
     
@@ -79,40 +105,44 @@
     // Html-Event Listener
     
     //play
-    $(this).find('.'+ opts.cssPrefix +'play').bind('click', function(e) {      
+    $(player).find('.'+ opts.cssPrefix +'play').bind('click', function(e) {      
       e.preventDefault();
       opts.element.play();              
       
     });
     
     //pause
-    $(this).find('.'+ opts.cssPrefix +'pause').bind('click', function(e) {   
+    $(player).find('.'+ opts.cssPrefix +'pause').bind('click', function(e) {   
       e.preventDefault();
       opts.element.pause();      
     });
     
     
     // playToggle
-    $(this).find('.'+ opts.cssPrefix +'play-toggle').bind('click', function(e) {
+    $(player).find('.'+ opts.cssPrefix +'play-toggle').bind('click', function(e) {
       e.preventDefault();
       if(opts.element.paused) {
     	opts.element.play();
       } else {
         opts.element.pause();
       }
-      
-      
     });
     
     // volumeUp
     $(player).find('.'+ opts.cssPrefix +'volume-up').bind('click', function(e) {   
       e.preventDefault();
-      if(opts.element.volume < 1.0) opts.element.volume = opts.element.volume + 0.1;      
+      if(opts.volume < 100) {
+        opts.volume = opts.volume + 10;
+        opts.element.volume = opts.volume / 100;
+      }
     });
     
     $(player).find('.'+ opts.cssPrefix +'volume-down').bind('click', function(e) {   
       e.preventDefault();
-      if(opts.element.volume > 0.0) opts.element.volume = opts.element.volume - 0.1;     
+      if(opts.volume > 0) {
+        opts.volume = opts.volume - 10;
+        opts.element.volume = opts.volume / 100;
+      }
     });
     
     
