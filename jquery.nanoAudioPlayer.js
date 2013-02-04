@@ -14,7 +14,7 @@
 	  var playTypes = new Array();
 	  var i = 0;
 	  $.each(types, function(key, value) {
-	  	if(element.canPlayType(types[i]) {
+	  	if(element.canPlayType(types[i])) {
 	  		playTypes[i]['suffix'] = key;
 	  		playTypes[i]['type'] = value;
 	  		
