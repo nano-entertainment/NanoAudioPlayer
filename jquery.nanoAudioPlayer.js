@@ -83,21 +83,9 @@
       }, false);
     }
     
-    selectPlayType(opts.element, opts.types, 0);
+    var audioTypes = selectPlayType(opts.element, opts.types, 0);
     
-    key
-    
-    var suffix;
-    
-    //add audio
-    if(opts.element.canPlayType("audio/ogg"))
-    {
-      suffix = "ogg";
-    } else {
-      suffix = "mp3";
-    }  
-    
-    opts.element.src = opts.file + "." + suffix;
+    opts.element.src = opts.file + "." + audioTypes[0]['suffix'];
     
     
 
